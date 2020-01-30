@@ -1,0 +1,20 @@
+<div *ngIf="$coinDetail">
+  <app-refresh></app-refresh>
+  <h1> Coin </h1>
+  <p>  Last updated: {{$coinDetail.lastUpdated | date:'medium'}}</p>
+  <p>  Rank: {{$coinDetail.cmc_rank}} </p>
+  <p>  Name: {{$coinDetail.name}}</p>
+  <p>  Symbol: {{$coinDetail.symbol}}</p>
+  <p>  Price: {{ $coinDetail.price }}</p>
+  <p>  24 Hour Volume: {{ $coinDetail.dayVolume }}</p>
+  <p>  MarketCap: {{ $coinDetail.marketCap }}</p>
+  <p>  Price in Bitcoin: {{ $coinDetail.bitcoinPrice }} </p>
+  <p [ngClass]="{ 'text-color-green': ($coinDetail.hourChange > 0),  'text-color-red' : ($coinDetail.hourChange < 0) }"> 1 hour change : {{ $coinDetail.hourChange}}</p>
+  <p [ngClass]="{ 'text-color-green': ($coinDetail.dayChange > 0),  'text-color-red' : ($coinDetail.dayChange < 0) }"> 24 hour change : {{ $coinDetail.dayChange}}</p>
+  <p [ngClass]="{ 'text-color-green': ($coinDetail.weekChange > 0),  'text-color-red' : ($coinDetail.weekChange < 0) }">   7d hour change : {{ $coinDetail.weekChange}}
+  </p>
+  <p>  Total supply: {{ $coinDetail.totalSupply }} {{$coinDetail.symbol}}
+  </p>
+  <p>  Avaialble supply: {{ $coinDetail.availableSupply }} {{$coinDetail.symbol}}
+  </p>
+</div>

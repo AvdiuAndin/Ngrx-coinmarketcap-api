@@ -1,0 +1,11 @@
+<h2>
+  Settings
+</h2>
+<mat-form-field>
+  <mat-label>Select current currency</mat-label>
+  <mat-select [value]="$currentCurrency | async" (valueChange)="changeCurrency($event)">
+    <mat-option *ngFor="let currency of $currencies | async" [value]="currency">
+      {{currency}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,0 +1,22 @@
+table{
+  width: 100%;
+}
+td {
+  cursor: pointer;
+}
+tr:hover{
+  background: #eeeeee;
+}
+th.mat-header-cell {
+  width: 25%;
+}
+app-refresh{
+  float:right;
+  margin: 10px;
+}
+.text-color-red{
+  color: rgb(217, 64, 64);
+}
+.text-color-green{
+  color: rgb(0, 158, 115);
+}

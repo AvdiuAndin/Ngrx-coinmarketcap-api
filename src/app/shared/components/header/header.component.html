@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <h1>Cryptocurrencies Market Capitalization</h1>
+  <div *ngIf="showSettings" (click)="goToSettings()" class="image-wrapper">
+    <img src="assets/icons/icon-settings.svg"/>
+  </div>
+</div>
+<div class="back-btn" *ngIf="showBackButton" (click)="goBack()">
+  Go back
+</div>
