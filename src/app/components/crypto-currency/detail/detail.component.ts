@@ -15,7 +15,7 @@ import {Observable, Subscription} from 'rxjs';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit, OnDestroy {
-  $coinDetail;
+  $coinDetail =  this.store.select(cryptoCurrencySelector);
   currentCurrency: string;
 
   selectRefreshSubscription: Subscription;
@@ -24,9 +24,6 @@ export class DetailComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.$coinDetail = this.store.select(cryptoCurrencySelector).subscribe((coin) => {
-      this.$coinDetail = coin;
-    });
 
     const cryptoCurrencyId = this.activatedRoute.snapshot.paramMap.get('id');
     // Get selected currency and get crypto currency

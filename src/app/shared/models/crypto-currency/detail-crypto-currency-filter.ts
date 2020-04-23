@@ -1,7 +1,6 @@
 export class DetailCryptoCurrencyFilter {
   filters = {
     id: null,
-    // tslint:disable-next-line:max-line-length
     convert: null
   };
 

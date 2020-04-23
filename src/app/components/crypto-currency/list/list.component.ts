@@ -21,7 +21,7 @@ import {selectRefreshSelector} from '../../../shared/selectors/refresh-selector'
 })
 export class ListComponent implements OnInit, OnDestroy {
 
-  $crytocurrenciesList = new Observable();
+  $crytocurrenciesList = this.store.select(selectCryptoCurrencyListSelector);
   displayedColumns = ['rank', 'symbol', 'price', 'percent_change_24h'];
   currencyType;
   selectRefreshSubscription: Subscription;
@@ -37,8 +37,6 @@ export class ListComponent implements OnInit, OnDestroy {
       this.getCryptoList(this.currencyType);
     });
 
-    // Listen to changes on cryptoCurrencyList
-    this.$crytocurrenciesList = this.store.select(selectCryptoCurrencyListSelector);
 
     // Listen when refresh is clicked
     this.selectRefreshSubscription = this.store.select(selectRefreshSelector).subscribe((refresh) => {

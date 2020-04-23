@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {RestService} from './rest.service';
-import {environment} from '../../../environments/environment';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { RestService } from './rest.service';
+import { environment } from '../../../environments/environment';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { HttpMethod } from '../contants/http-method.enum';
-import {CoinMarketCapApiEndpointsContants} from '../contants/coin-market-cap-api-endpoints.contants';
-import {isEmpty} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { coinMarketCapEndpoints } from '../contants/coin-market-cap-endpoints';
+import { isEmpty } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +14,17 @@ export class CoinmarketcapService {
 
   apiKey = environment.coinMarketCap.apiKey;
 
-  constructor(private restService: RestService, private http: HttpClient) {}
+  constructor(private restService: RestService, private http: HttpClient) { }
 
   public getListOfCryptocurrencies(queryParamsObj: object) {
     const options = this.addQueryParameters(queryParamsObj);
-    return this.request(HttpMethod.GET, CoinMarketCapApiEndpointsContants.GET_CRYPTOCURRENCY_LIST(), { params: options });
+    return this.request(HttpMethod.GET, coinMarketCapEndpoints.CRYPTOCURRENCY_LIST, { params: options });
     // return this.http.get('/assets/data.json');
   }
 
   public getCryptoCurrencyById(queryParamsObj: object) {
     const options = this.addQueryParameters(queryParamsObj);
-    return this.request(HttpMethod.GET, CoinMarketCapApiEndpointsContants.GET_CRYPTOCURRENCY_DETAIL(), { params: options });
+    return this.request(HttpMethod.GET, coinMarketCapEndpoints.CRYPTOCURRENCY_DETAIL, { params: options });
   }
 
   private addDefaultHeaders() {
@@ -37,7 +37,7 @@ export class CoinmarketcapService {
     };
   }
 
-  private addQueryParameters(params: any  ) {
+  private addQueryParameters(params: any) {
     // delete action type attribute
     if (params.type) {
       delete params.type;
